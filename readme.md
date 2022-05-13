@@ -1,4 +1,4 @@
-# Sinclair QL for [MiSTer Board](https://github.com/MiSTer-devel/Main_MiSTer/wiki) 
+# Sinclair QL DeMiSTified (coming from [MiSTer Board](https://github.com/MiSTer-devel/Main_MiSTer/wiki) )
 
 This is a much advanced port of the Sinclair QL implementation for the [MiST](https://github.com/mist-devel/mist-board/tree/master/cores/ql)
 
