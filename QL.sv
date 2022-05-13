@@ -41,13 +41,15 @@ module QL
         input         SPI_SS3,
         input         CONF_DATA0,
         input         CLOCK_27,
+		  
         output  [5:0] VGA_R,
         output  [5:0] VGA_G,
         output  [5:0] VGA_B,
-
-                  output [12:0] SDRAM_A,
-                  inout  [15:0] SDRAM_DQ,
-                  output        SDRAM_DQML,
+		  
+	  
+        output [12:0] SDRAM_A,
+        inout  [15:0] SDRAM_DQ,
+        output        SDRAM_DQML,
         output        SDRAM_DQMH,
         output        SDRAM_nWE,
         output        SDRAM_nCAS,
@@ -229,7 +231,8 @@ wire [63:0] img_size;
 
 wire [24:0] ps2_mouse;
 wire [10:0] ps2_key;
-wire [32:0] TIMESTAMP;
+wire ps2_clk,ps2_data;
+wire [32:0] TIMESTAMP = 33'd1652475501;
 
 wire        forced_scandoubler;
 
@@ -273,7 +276,14 @@ mist_io #(.STRLEN($size(CONF_STR)>>3),.PS2DIV(100)) mist_io
 	.ps2_mouse(ps2_mouse),
 
 	.joystick_0(joystick_0),
-	.joystick_1(joystick_1)
+	.joystick_1(joystick_1),
+		// unused
+	.ps2_kbd_clk(),
+	.ps2_kbd_data(),
+	.ps2_mouse_clk(),
+	.ps2_mouse_data(),
+	.joystick_analog_0(),
+	.joystick_analog_1()
 );
 
 reg rom_wr=0;
@@ -627,6 +637,7 @@ qimi qimi
 (
    .reset     ( reset          ),
 	.clk       ( clk_sys        ),
+	
 	.cep       ( ce_bus_p       ),
 	.cen       ( ce_bus_n       ),
 
@@ -634,7 +645,7 @@ qimi qimi
 	.cpu_addr  ( { cpu_addr[5], cpu_addr[1] } ),
 	.cpu_data  ( qimi_data      ),
 	.irq       ( qimi_irq       ),
-	
+
 	.ps2_mouse ( ps2_mouse      )
 );
 

@@ -11,7 +11,10 @@
 #undef CONFIG_WITHOUT_FILESYSTEM
 
 /* PS/2 Mouse support */
+/* PS/2 Mouse support */
 #define PS2_MOUSE
+#undef PS2_MOUSE_WHEEL /* Attempt to initialise the mouse in 4-byte (wheel) mode */
+#define PS2_MOUSE_USERIO /* Do we need to send the mouse data to the core (not needed if the core can interpret PS/2 wires directly. */
 #define PS2_WRITE /* Needed to initialise the mouse and put it in wheel mode */
 
 /* CDROM support - used by the TurboGrafx core */
@@ -21,7 +24,7 @@
 more obvious application of disk images on computer cores.  If not defined
 here, the number of units defaults to 4. */
 #define CONFIG_DISKIMG
-#define CONFIG_DISKIMG_UNITS 3
+#undef CONFIG_DISKIMG_UNITS 2
 
 /* Speed up file operations by "bookmarking" the file.
    (Undef to disable, or set to the number of desired bookmarks - a reasonable
@@ -41,10 +44,10 @@ here, the number of units defaults to 4. */
 #define CONFIG_EXTJOYSTICK
 
 /* Do we require an autoboot ROM, and thus should we notify the user if it's not found? */
-#undef ROM_REQUIRED
+#define ROM_REQUIRED
 
 /* ROM name will default to "BOOT    ROM" if not defined here... */ 
-#undef ROM_FILENAME "CORE    ROM"
+#define ROM_FILENAME "QL      ROM"
 
 #endif
 
