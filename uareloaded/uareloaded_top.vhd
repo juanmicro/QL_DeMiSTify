@@ -172,9 +172,9 @@ begin
 
 -- External devices tied to GPIOs
 ps2_mouse_dat_in<=ps2_mouse_dat;
-ps2_mouse_dat <= '0' when ps2_mouse_dat_out='0' else 'Z';
+--ps2_mouse_dat <= '0' when ps2_mouse_dat_out='0' else 'Z';
 ps2_mouse_clk_in<=ps2_mouse_clk;
-ps2_mouse_clk <= '0' when ps2_mouse_clk_out='0' else 'Z';
+--ps2_mouse_clk <= '0' when ps2_mouse_clk_out='0' else 'Z';
 
 ps2_keyboard_dat_in <=ps2_keyboard_dat;
 ps2_keyboard_dat <= '0' when ps2_keyboard_dat_out='0' else 'Z';
