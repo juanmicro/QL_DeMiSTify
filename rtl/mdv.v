@@ -47,18 +47,18 @@ reg  [16:0] mem_addr;
 wire [15:0] mdv_din;
 
 
-//dpram #(17, 88000) vram
-//(
-//	.wrclock(clk),
-//	.wraddress(dl_addr),
-//	.wren(dl_wr),
-//	.byteena_a(2'b11),
-//	.data(dl_data),
-//
-//	.rdclock(clk),
-//	.rdaddress(mem_addr),
-//	.q(mdv_din)
-//);
+dpram2 #(17, 88000) vram
+(
+	.wrclock(clk),
+	.wraddress(dl_addr),
+	.wren(dl_wr),
+	.byteena_a(2'b11),
+	.data(dl_data),
+
+	.rdclock(clk),
+	.rdaddress(mem_addr),
+	.q(mdv_din)
+);
 
 // a gap is permanently present if no mdv is inserted or if
 // there's a gap on the inserted one. This is the signal that triggers
